@@ -195,13 +195,13 @@ const timeSlots = ["10:00", "12:30", "15:00", "17:30"];
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeProcess, setActiveProcess] = useState(0);
-  const [selectedTreatment, setSelectedTreatment] = useState(treatments[0].title);
+  const [selectedTreatment, setSelectedTreatment] = useState("Faltenbehandlung");
   const [caseIndex, setCaseIndex] = useState(0);
   const [compareValue, setCompareValue] = useState(52);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const [bookingStep, setBookingStep] = useState(0);
   const [booking, setBooking] = useState({
-    treatment: treatments[0].title,
+    treatment: "Faltenbehandlung",
     practitioner: "Dr. L. Kaya",
     date: "Donnerstag, 24. Oktober",
     time: "15:00",
@@ -211,9 +211,22 @@ function Index() {
   });
   const processRefs = useRef<Array<HTMLDivElement | null>>([]);
   const progress = ((activeProcess + 1) / processSteps.length) * 100;
-  const selectedCase = cases[caseIndex];
+  const selectedCase = cases[caseIndex] ?? { title: "Hautbild & Glow", position: "left" };
+  const currentProcessStep = processSteps[activeProcess] ?? { number: "01", title: "Analyse", text: "" };
+  const activeTestimonial = testimonials[testimonialIndex] ?? {
+    text: "Sehr feinfühlige Beratung und ein natürlich frisches Ergebnis.",
+    name: "LUMINA Kundin",
+    place: "Bochum",
+  };
   const activeTreatment = useMemo(
-    () => treatments.find((treatment) => treatment.title === selectedTreatment) ?? treatments[0],
+    () =>
+      treatments.find((treatment) => treatment.title === selectedTreatment) ?? {
+        title: "Faltenbehandlung",
+        subtitle: "botox® für entspannte Mimik",
+        detail: "Sanfte Dosierungen für einen natürlichen, erholten Ausdruck.",
+        icon: Syringe,
+        from: "ab 189 €",
+      },
     [selectedTreatment],
   );
 
@@ -317,7 +330,7 @@ function Index() {
             <div className="mt-8 h-2 overflow-hidden rounded-full bg-secondary">
               <div className="h-full rounded-full bg-primary transition-all duration-500" style={{ width: `${progress}%` }} />
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">{processSteps[activeProcess].number} von 04</p>
+            <p className="mt-4 text-sm text-muted-foreground">{currentProcessStep.number} von 04</p>
           </div>
           <div className="space-y-6">
             {processSteps.map((step, index) => (
@@ -539,10 +552,10 @@ function Index() {
               ))}
             </div>
             <p className="mx-auto mt-8 max-w-3xl font-serif text-3xl leading-snug sm:text-4xl">
-              “{testimonials[testimonialIndex].text}”
+              “{activeTestimonial.text}”
             </p>
             <p className="mt-7 text-sm text-muted-foreground">
-              {testimonials[testimonialIndex].name} · {testimonials[testimonialIndex].place}
+              {activeTestimonial.name} · {activeTestimonial.place}
             </p>
             <div className="mt-8 flex justify-center gap-3">
               <Button type="button" variant="outline" size="icon" className="rounded-full border-primary" onClick={() => setTestimonialIndex((current) => (current + testimonials.length - 1) % testimonials.length)} aria-label="Vorherige Bewertung">
