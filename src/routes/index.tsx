@@ -17,7 +17,7 @@ import {
   WandSparkles,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
@@ -360,14 +360,16 @@ function Index() {
                 const Icon = treatment.icon;
                 const active = activeTreatment.title === treatment.title;
                 return (
-                  <button
+                  <Button
                     key={treatment.title}
                     type="button"
+                    variant="outline"
                     onClick={() => setSelectedTreatment(treatment.title)}
-                    className={`group rounded-3xl border p-6 text-left transition-all ${
+                    className={`group h-auto whitespace-normal rounded-3xl p-6 text-left transition-all ${
                       active ? "border-primary bg-card shadow-lumina" : "border-border bg-background hover:border-primary/60"
                     }`}
                   >
+                    <div className="w-full">
                     <div className="mb-8 flex items-center justify-between">
                       <span className="flex size-12 items-center justify-center rounded-full bg-secondary text-primary">
                         <Icon className="size-5" aria-hidden="true" />
@@ -376,7 +378,8 @@ function Index() {
                     </div>
                     <h3 className="font-serif text-3xl font-semibold">{treatment.title}</h3>
                     <p className="mt-2 text-sm text-muted-foreground">{treatment.subtitle}</p>
-                  </button>
+                    </div>
+                  </Button>
                 );
               })}
             </div>
@@ -866,7 +869,7 @@ function Header({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (op
   );
 }
 
-function WizardPanel({ title, children }: { title: string; children: React.ReactNode }) {
+function WizardPanel({ title, children }: { title: string; children: ReactNode }) {
   return (
     <div className="animate-fade-in">
       <h3 className="font-serif text-3xl font-semibold sm:text-4xl">{title}</h3>
