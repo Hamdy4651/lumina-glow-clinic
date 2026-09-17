@@ -370,14 +370,14 @@ function Index() {
                     }`}
                   >
                     <div className="w-full">
-                    <div className="mb-8 flex items-center justify-between">
-                      <span className="flex size-12 items-center justify-center rounded-full bg-secondary text-primary">
-                        <Icon className="size-5" aria-hidden="true" />
-                      </span>
-                      <span className="text-sm text-primary">{treatment.from}</span>
-                    </div>
-                    <h3 className="font-serif text-3xl font-semibold">{treatment.title}</h3>
-                    <p className="mt-2 text-sm text-muted-foreground">{treatment.subtitle}</p>
+                      <div className="mb-8 flex items-center justify-between">
+                        <span className="flex size-12 items-center justify-center rounded-full bg-secondary text-primary">
+                          <Icon className="size-5" aria-hidden="true" />
+                        </span>
+                        <span className="text-sm text-primary">{treatment.from}</span>
+                      </div>
+                      <h3 className="font-serif text-3xl font-semibold">{treatment.title}</h3>
+                      <p className="mt-2 text-sm text-muted-foreground">{treatment.subtitle}</p>
                     </div>
                   </Button>
                 );
@@ -844,7 +844,7 @@ function Header({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (op
 
       {menuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
-          <button type="button" aria-label="Menü schließen" className="absolute inset-0 bg-lumina-scrim" onClick={() => setMenuOpen(false)} />
+          <Button type="button" variant="ghost" aria-label="Menü schließen" className="absolute inset-0 h-auto w-auto rounded-none bg-lumina-scrim p-0 hover:bg-lumina-scrim" onClick={() => setMenuOpen(false)} />
           <div className="absolute right-0 top-0 h-screen w-[86vw] max-w-sm bg-background p-6 shadow-lumina">
             <div className="flex items-center justify-between">
               <img src={logoAsset.url} alt="LUMINA aesthetic clinic Logo" width={90} height={90} className="h-14 w-auto" />
