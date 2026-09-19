@@ -21,7 +21,7 @@ import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import logoAsset from "@/assets/lumina-logo.png.asset.json";
+import logoAsset from "@/assets/lumina-logo.png";
 import clinicPortrait from "@/assets/lumina-clinic-portrait.jpg";
 import beforeAfterCases from "@/assets/lumina-before-after-cases.jpg";
 
@@ -838,7 +838,7 @@ function Index() {
       <footer className="bg-lumina-footer px-5 py-14 text-lumina-footer-foreground sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_1.3fr]">
           <div>
-            <img src={logoAsset.url} alt="LUMINA aesthetic clinic Logo" width={160} height={160} loading="lazy" className="h-24 w-auto" />
+            <img src={logoAsset} alt="LUMINA aesthetic clinic Logo" width={160} height={160} loading="lazy" className="h-24 w-auto" />
             <p className="mt-6 max-w-md leading-7 text-lumina-footer-muted">Natürliche Schönheit unterstreichen. Ästhetische Medizin in Bochum.</p>
           </div>
           <div className="grid gap-8 sm:grid-cols-3">
@@ -869,7 +869,7 @@ function Header({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (op
     <header className="fixed inset-x-0 top-0 z-50 border-b border-primary/25 bg-background/78 px-5 py-3 backdrop-blur-2xl sm:px-8 lg:px-12">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-5">
         <a href="#start" className="flex items-center gap-3" aria-label="LUMINA Startseite">
-          <img src={logoAsset.url} alt="LUMINA aesthetic clinic Logo" width={92} height={92} className="h-14 w-auto" />
+          <img src={logoAsset} alt="LUMINA aesthetic clinic Logo" width={92} height={92} className="h-14 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-7 text-sm text-muted-foreground lg:flex" aria-label="Hauptnavigation">
@@ -910,7 +910,7 @@ function Header({ menuOpen, setMenuOpen }: { menuOpen: boolean; setMenuOpen: (op
           <Button type="button" variant="ghost" aria-label="Menü schließen" className="absolute inset-0 h-auto w-auto rounded-none bg-lumina-scrim p-0 hover:bg-lumina-scrim" onClick={() => setMenuOpen(false)} />
           <div className="absolute right-0 top-0 h-screen w-[86vw] max-w-sm bg-background p-6 shadow-lumina">
             <div className="flex items-center justify-between">
-              <img src={logoAsset.url} alt="LUMINA aesthetic clinic Logo" width={90} height={90} className="h-14 w-auto" />
+              <img src={logoAsset} alt="LUMINA aesthetic clinic Logo" width={90} height={90} className="h-14 w-auto" />
               <Button type="button" variant="outline" size="icon" className="rounded-full border-primary" onClick={() => setMenuOpen(false)} aria-label="Menü schließen">
                 <X aria-hidden="true" />
               </Button>
