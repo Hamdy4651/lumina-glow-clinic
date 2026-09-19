@@ -157,6 +157,7 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-lumina-sans);
+    overflow-x: clip;
   }
 
   button,

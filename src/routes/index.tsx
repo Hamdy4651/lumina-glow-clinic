@@ -253,7 +253,7 @@ function Index() {
       },
     [selectedTreatment],
   );
-  const activeFaqs = treatmentFaqs[selectedTreatment] ?? treatmentFaqs.Faltenbehandlung ?? [];
+  const activeFaqs = treatmentFaqs[selectedTreatment] ?? treatmentFaqs["Faltenbehandlung"] ?? [];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
