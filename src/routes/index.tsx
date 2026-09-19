@@ -167,27 +167,51 @@ const prices = [
   { category: "Kontur", lines: ["Lemon Bottle ab 149 €", "Kinnlinie ab 299 €", "Beratung 0 €"] },
 ];
 
-const faqs = [
-  {
-    question: "Wie natürlich wird das Ergebnis?",
-    answer:
-      "Die Planung ist bewusst zurückhaltend. Ziel ist ein frischer, erholter Ausdruck, der zu Ihrem Gesicht passt.",
-  },
-  {
-    question: "Wie schnell sehe ich Resultate?",
-    answer:
-      "Hyaluron wirkt meist direkt, botox® entwickelt sich über mehrere Tage. Skin-Treatments zeigen oft sofort Glow und verbessern sich weiter.",
-  },
-  {
-    question: "Kann ich vorab per WhatsApp schreiben?",
-    answer:
-      "Ja. Senden Sie Ihre Anfrage direkt an 015 77777 9962, gern mit Wunschbehandlung und bevorzugtem Zeitraum.",
-  },
-  {
-    question: "Wo befindet sich LUMINA?",
-    answer: "Sie finden uns in der Brückstr. 44, 44787 Bochum, zentral in der Innenstadt.",
-  },
-];
+const treatmentFaqs: Record<string, Array<{ question: string; answer: string }>> = {
+  Faltenbehandlung: [
+    { question: "Wie lange hält botox®?", answer: "Die Wirkung hält häufig drei bis vier Monate. Stoffwechsel, Muskelaktivität und behandelte Region beeinflussen die individuelle Dauer." },
+    { question: "Wann wirkt botox®?", answer: "Erste Veränderungen zeigen sich meist nach drei bis fünf Tagen. Das vollständige Ergebnis lässt sich in der Regel nach etwa 14 Tagen beurteilen." },
+    { question: "Wie läuft eine botox®-Behandlung ab?", answer: "Nach Analyse und Aufklärung werden kleine, gezielte Mengen injiziert. Die eigentliche Behandlung dauert meist nur wenige Minuten." },
+    { question: "Welche Falten können behandelt werden?", answer: "Typische Bereiche sind Zornesfalte, Stirn und Augenpartie. Ob eine Behandlung sinnvoll ist, klären wir immer individuell." },
+    { question: "Gibt es Nebenwirkungen?", answer: "Vorübergehende Rötungen, kleine Schwellungen oder Blutergüsse sind möglich. Seltene Risiken und persönliche Ausschlussgründe besprechen wir vorab ausführlich." },
+    { question: "Wann darf botox® nicht angewendet werden?", answer: "Unter anderem in Schwangerschaft und Stillzeit sowie bei bestimmten Erkrankungen oder Medikamenten. Die medizinische Eignung wird im Beratungsgespräch geprüft." },
+  ],
+  Hyaluron: [
+    { question: "Wie lange hält Hyaluron?", answer: "Je nach Produkt, Region und Stoffwechsel bleibt das Ergebnis häufig sechs bis zwölf Monate sichtbar." },
+    { question: "Ist das Ergebnis sofort sichtbar?", answer: "Eine Veränderung ist meist direkt erkennbar. Schwellungen können das erste Bild beeinflussen; das finale Ergebnis beurteilen wir nach der Beruhigungsphase." },
+    { question: "Welche Bereiche können behandelt werden?", answer: "Häufig behandeln wir Lippen, Wangen, Jawline und Nasolabialbereich. Die Empfehlung folgt immer den Proportionen Ihres Gesichts." },
+    { question: "Wirkt Hyaluron natürlich?", answer: "Unser Ansatz ist zurückhaltend: harmonische Konturen und Frische statt sichtbarer Überkorrektur." },
+    { question: "Was sollte ich danach beachten?", answer: "Am Behandlungstag sollten Druck, starke Wärme, intensiver Sport und Alkohol vermieden werden. Sie erhalten persönliche Nachsorgehinweise." },
+  ],
+  "Lemon Bottle": [
+    { question: "Für welche Zonen eignet sich Lemon Bottle?", answer: "Die Behandlung kann für kleine, klar begrenzte Fettdepots infrage kommen, etwa unter dem Kinn oder an ausgewählten Körperzonen." },
+    { question: "Ist Lemon Bottle eine Methode zum Abnehmen?", answer: "Nein. Sie ersetzt weder Gewichtsreduktion noch Bewegung, sondern richtet sich ausschließlich an lokal begrenzte Konturen." },
+    { question: "Wie viele Sitzungen sind nötig?", answer: "Das ist abhängig von Zone und Ausgangslage. Nach der Analyse erhalten Sie eine realistische Einschätzung zur möglichen Sitzungszahl." },
+    { question: "Wann sieht man ein Ergebnis?", answer: "Veränderungen entwickeln sich schrittweise. Das Gewebe benötigt Zeit, weshalb das Ergebnis nicht unmittelbar nach der Behandlung bewertet wird." },
+    { question: "Welche Reaktionen sind möglich?", answer: "Schwellung, Rötung, Druckempfindlichkeit oder kleine Blutergüsse können vorübergehend auftreten. Risiken werden individuell besprochen." },
+  ],
+  "Skin Booster": [
+    { question: "Was ist ein Skin Booster?", answer: "Ein Skin Booster bringt feuchtigkeitsbindende Wirkstoffe gezielt in die Haut, um Hautqualität, Elastizität und Frische zu unterstützen." },
+    { question: "Für wen eignet sich die Behandlung?", answer: "Sie kann bei feuchtigkeitsarmer, fahler oder feinliniger Haut sinnvoll sein. Die Eignung klären wir nach einer Hautanalyse." },
+    { question: "Wie viele Behandlungen werden empfohlen?", answer: "Häufig wird eine Aufbaukur empfohlen. Anzahl und Abstand richten sich nach Produkt, Hautzustand und Behandlungsziel." },
+    { question: "Wann bin ich wieder gesellschaftsfähig?", answer: "Kleine Einstichstellen oder leichte Schwellungen können kurz sichtbar sein. Viele Kundinnen und Kunden sind rasch wieder alltagstauglich." },
+    { question: "Wie lange hält der Glow?", answer: "Die Haltbarkeit ist individuell. Regelmäßige Pflege, Sonnenschutz und Auffrischungen können das Ergebnis unterstützen." },
+  ],
+  HydraFacial: [
+    { question: "Was passiert bei einem HydraFacial?", answer: "Die Behandlung kombiniert Reinigung, sanftes Peeling, Ausreinigung und intensive Versorgung der Haut in mehreren abgestimmten Schritten." },
+    { question: "Für welchen Hauttyp eignet es sich?", answer: "HydraFacial lässt sich an viele Hauttypen anpassen. Empfindlichkeit, aktive Entzündungen und individuelle Ziele berücksichtigen wir vorab." },
+    { question: "Sieht man sofort einen Effekt?", answer: "Viele erleben direkt danach ein glatteres, frischer wirkendes Hautbild. Das Ergebnis variiert je nach Ausgangslage." },
+    { question: "Gibt es eine Ausfallzeit?", answer: "In der Regel ist keine längere Ausfallzeit zu erwarten. Kurzzeitige Rötungen sind je nach Hautreaktion möglich." },
+    { question: "Wie oft ist HydraFacial sinnvoll?", answer: "Einzeltermine sorgen für einen Frischekick; regelmäßige Abstände können Teil eines längerfristigen Hautkonzepts sein." },
+  ],
+  Infusionen: [
+    { question: "Was enthalten die Infusionen?", answer: "Die Zusammensetzung wird je nach Angebot und persönlicher Eignung ausgewählt. Inhaltsstoffe und Dosierungen erläutern wir transparent vorab." },
+    { question: "Wie lange dauert eine Infusion?", answer: "Planen Sie abhängig von der Zusammensetzung meist etwa 30 bis 60 Minuten in ruhiger Atmosphäre ein." },
+    { question: "Ist eine ärztliche Prüfung nötig?", answer: "Ja. Vor einer Infusion prüfen wir Vorerkrankungen, Medikamente und mögliche Gegenanzeigen, um die medizinische Eignung einzuschätzen." },
+    { question: "Wie oft kann eine Infusion erfolgen?", answer: "Das hängt von Ziel, Zusammensetzung und individueller Situation ab. Eine pauschale Empfehlung ohne Anamnese ist nicht sinnvoll." },
+    { question: "Ersetzt sie eine ausgewogene Ernährung?", answer: "Nein. Infusionen ersetzen weder ausgewogene Ernährung noch die Behandlung bestehender Erkrankungen." },
+  ],
+};
 
 const bookingSteps = ["Behandlung", "Behandler:in", "Termin", "Kontakt", "Fragen", "Bestätigung"];
 const timeSlots = ["10:00", "12:30", "15:00", "17:30"];
@@ -229,6 +253,7 @@ function Index() {
       },
     [selectedTreatment],
   );
+  const activeFaqs = treatmentFaqs[selectedTreatment] ?? treatmentFaqs.Faltenbehandlung ?? [];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -250,6 +275,20 @@ function Index() {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("is-visible");
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+    );
+    const revealNodes = document.querySelectorAll("[data-reveal]");
+    revealNodes.forEach((node) => revealObserver.observe(node));
+    return () => revealObserver.disconnect();
+  }, []);
+
   function updateBooking(key: keyof typeof booking, value: string) {
     setBooking((current) => ({ ...current, [key]: value }));
   }
@@ -264,15 +303,15 @@ function Index() {
       <section id="start" className="relative min-h-[85vh] overflow-hidden px-5 pt-28 sm:px-8 lg:px-12">
         <div className="absolute inset-x-0 top-28 mx-auto h-64 max-w-4xl rounded-full bg-lumina-glow blur-3xl" aria-hidden="true" />
         <div className="mx-auto grid max-w-7xl items-center gap-12 pb-14 lg:min-h-[calc(85vh-7rem)] lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="relative z-10 max-w-3xl animate-fade-in">
-            <p className="mb-5 text-sm uppercase text-primary">WILLKOMMEN BEI LUMINA</p>
-            <h1 className="font-serif text-5xl font-semibold leading-none text-foreground sm:text-7xl lg:text-8xl">
+          <div className="relative z-10 max-w-3xl hero-copy">
+            <p className="mb-5 text-sm uppercase text-primary hero-kicker">WILLKOMMEN BEI LUMINA</p>
+            <h1 className="font-serif text-5xl font-semibold leading-none text-foreground hero-title sm:text-7xl lg:text-8xl">
               Natürliche Schönheit <span className="block text-primary">unterstreichen.</span>
             </h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground">
               LUMINA aesthetic clinic in Bochum verbindet botox®, Hyaluron und Skin-Treatments mit ruhiger Beratung, präzisem Blick und einem natürlich frischen Ergebnis.
             </p>
-            <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-10 flex flex-col gap-3 hero-actions sm:flex-row">
               <Button asChild className="h-12 rounded-full px-7 text-sm uppercase">
                 <a href="#buchung">
                   Termin buchen <CalendarDays aria-hidden="true" />
@@ -291,8 +330,8 @@ function Index() {
             </div>
           </div>
 
-          <div className="relative z-10 mx-auto w-full max-w-xl lg:mr-0">
-            <div className="organic-mask relative overflow-hidden border border-primary/35 bg-secondary shadow-lumina">
+          <div className="relative z-10 mx-auto w-full max-w-xl hero-visual lg:mr-0">
+            <div className="organic-mask relative overflow-hidden border border-primary/35 bg-secondary shadow-lumina hero-float">
               <img
                 src={clinicPortrait}
                 alt="Warmer Behandlungsraum der LUMINA aesthetic clinic"
@@ -309,10 +348,10 @@ function Index() {
         </div>
       </section>
 
-      <section aria-label="Vertrauen" className="border-y border-primary/30 bg-secondary/70 px-5 py-5 sm:px-8 lg:px-12">
+      <section aria-label="Vertrauen" data-reveal className="border-y border-primary/30 bg-secondary/70 px-5 py-5 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {trustItems.map((item) => (
-            <div key={item} className="flex items-center gap-3 rounded-full bg-card px-5 py-3 text-sm text-foreground shadow-soft">
+            <div key={item} className="motion-card flex items-center gap-3 rounded-full bg-card px-5 py-3 text-sm text-foreground shadow-soft">
               <ShieldCheck className="size-5 text-primary" aria-hidden="true" />
               <span>{item}</span>
             </div>
@@ -320,7 +359,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="ablauf" className="px-5 py-24 sm:px-8 lg:px-12">
+      <section id="ablauf" data-reveal className="px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="lg:sticky lg:top-28 lg:h-fit">
             <p className="text-sm uppercase text-primary">Cinematic Scroll</p>
@@ -340,7 +379,7 @@ function Index() {
                   processRefs.current[index] = node;
                 }}
                 data-step-index={index}
-                className={`rounded-3xl border p-8 transition-all duration-500 ${
+                className={`process-card rounded-3xl border p-8 transition-all duration-500 ${
                   activeProcess === index
                     ? "border-primary bg-card shadow-lumina"
                     : "border-border bg-secondary/45"
@@ -355,7 +394,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="behandlungen" className="bg-secondary/55 px-5 py-24 sm:px-8 lg:px-12">
+      <section id="behandlungen" data-reveal className="bg-secondary/55 px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -378,7 +417,7 @@ function Index() {
                     type="button"
                     variant="outline"
                     onClick={() => setSelectedTreatment(treatment.title)}
-                    className={`group h-auto whitespace-normal rounded-3xl p-6 text-left transition-all ${
+                    className={`group motion-card h-auto whitespace-normal rounded-3xl p-6 text-left transition-all ${
                       active ? "border-primary bg-card shadow-lumina" : "border-border bg-background hover:border-primary/60"
                     }`}
                   >
@@ -397,7 +436,7 @@ function Index() {
               })}
             </div>
 
-            <aside className="rounded-3xl border border-primary/35 bg-card p-8 shadow-soft">
+            <aside key={activeTreatment.title} className="detail-swap rounded-3xl border border-primary/35 bg-card p-8 shadow-soft">
               <p className="text-sm uppercase text-primary">Detailansicht</p>
               <h3 className="mt-5 font-serif text-5xl font-semibold">{activeTreatment.title}</h3>
               <p className="mt-5 leading-8 text-muted-foreground">{activeTreatment.detail}</p>
@@ -415,7 +454,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="signature" className="px-5 py-24 sm:px-8 lg:px-12">
+      <section id="signature" data-reveal className="px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-7xl overflow-hidden rounded-3xl border border-primary/35 bg-card shadow-soft lg:grid-cols-[0.92fr_1.08fr]">
           <div className="min-h-[520px] bg-secondary">
             <img
@@ -424,7 +463,7 @@ function Index() {
               width={1200}
               height={1504}
               loading="lazy"
-              className="h-full w-full object-cover"
+               className="h-full w-full object-cover image-drift"
             />
           </div>
           <div className="p-8 sm:p-12 lg:p-16">
@@ -446,13 +485,13 @@ function Index() {
         </div>
       </section>
 
-      <section id="angebote" className="bg-secondary/55 px-5 py-24 sm:px-8 lg:px-12">
+      <section id="angebote" data-reveal className="bg-secondary/55 px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <p className="text-sm uppercase text-primary">Angebote</p>
           <h2 className="mt-4 font-serif text-4xl font-semibold sm:text-6xl">Aktuelle Beauty-Momente.</h2>
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {offers.map((offer) => (
-              <article key={offer.name} className="rounded-3xl border border-primary/35 bg-card p-7 shadow-soft">
+              <article key={offer.name} className="motion-card rounded-3xl border border-primary/35 bg-card p-7 shadow-soft">
                 <span className="inline-flex rounded-full bg-accent px-4 py-2 text-sm font-medium text-accent-foreground">{offer.badge}</span>
                 <h3 className="mt-8 font-serif text-3xl font-semibold">{offer.name}</h3>
                 <div className="mt-8 flex items-end gap-3">
@@ -468,7 +507,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="vorher-nachher" className="px-5 py-24 sm:px-8 lg:px-12">
+      <section id="vorher-nachher" data-reveal className="px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
             <div>
@@ -540,11 +579,11 @@ function Index() {
         </div>
       </section>
 
-      <section id="bewertungen" className="bg-secondary/55 px-5 py-24 sm:px-8 lg:px-12">
+      <section id="bewertungen" data-reveal className="bg-secondary/55 px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-5xl text-center">
           <p className="text-sm uppercase text-primary">Bewertungen</p>
           <h2 className="mt-4 font-serif text-4xl font-semibold sm:text-6xl">Worte aus Bochum.</h2>
-          <div className="mt-12 rounded-3xl border border-primary/35 bg-card p-8 shadow-soft sm:p-12">
+           <div key={testimonialIndex} className="testimonial-swap mt-12 rounded-3xl border border-primary/35 bg-card p-8 shadow-soft sm:p-12">
             <Quote className="mx-auto size-9 text-primary" aria-hidden="true" />
             <div className="mt-7 flex justify-center gap-1 text-primary" aria-label="5 Sterne">
               {Array.from({ length: 5 }).map((_, index) => (
@@ -569,13 +608,13 @@ function Index() {
         </div>
       </section>
 
-      <section id="preise" className="px-5 py-24 sm:px-8 lg:px-12">
+      <section id="preise" data-reveal className="px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-7xl">
           <p className="text-sm uppercase text-primary">Preistabelle</p>
           <h2 className="mt-4 font-serif text-4xl font-semibold sm:text-6xl">Transparente ab-Preise.</h2>
           <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
             {prices.map((price) => (
-              <article key={price.category} className="rounded-3xl border border-border bg-card p-7 shadow-soft">
+              <article key={price.category} className="motion-card rounded-3xl border border-border bg-card p-7 shadow-soft">
                 <h3 className="font-serif text-3xl font-semibold text-primary">{price.category}</h3>
                 <ul className="mt-7 space-y-4 text-sm text-muted-foreground">
                   {price.lines.map((line) => (
@@ -591,7 +630,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="ueber-uns" className="bg-secondary/55 px-5 py-24 sm:px-8 lg:px-12">
+      <section id="ueber-uns" data-reveal className="bg-secondary/55 px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div className="rounded-3xl border border-primary/35 bg-card p-8 shadow-soft sm:p-12">
             <p className="text-sm uppercase text-primary">Über uns</p>
@@ -607,7 +646,7 @@ function Index() {
               ["100%", "Fokus auf Natürlichkeit"],
               ["Bochum", "Zentrale Innenstadtlage"],
             ].map(([value, label]) => (
-              <div key={label} className="rounded-3xl bg-card p-8 shadow-soft">
+              <div key={label} className="motion-card rounded-3xl bg-card p-8 shadow-soft">
                 <p className="font-serif text-5xl text-primary">{value}</p>
                 <p className="mt-3 text-sm text-muted-foreground">{label}</p>
               </div>
@@ -616,11 +655,12 @@ function Index() {
         </div>
       </section>
 
-      <section id="kontakt" className="px-5 py-24 sm:px-8 lg:px-12">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+      <section id="kontakt" data-reveal className="px-5 py-24 sm:px-8 lg:px-12">
+        <div className="mx-auto max-w-7xl">
+          <div className="grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
-            <p className="text-sm uppercase text-primary">Kontakt</p>
-            <h2 className="mt-4 font-serif text-4xl font-semibold sm:text-6xl">Besuchen Sie LUMINA in Bochum.</h2>
+            <p className="text-sm uppercase text-primary">FAQ & Kontakt</p>
+            <h2 className="mt-4 font-serif text-4xl font-semibold sm:text-6xl">Antworten, die Sicherheit geben.</h2>
             <div className="mt-10 space-y-4 text-muted-foreground">
               <p>Brückstr. 44, 44787 Bochum</p>
               <p>WhatsApp 015 77777 9962</p>
@@ -632,18 +672,28 @@ function Index() {
               </a>
             </Button>
           </div>
-          <Accordion type="single" collapsible className="rounded-3xl border border-primary/35 bg-card px-6 shadow-soft">
-            {faqs.map((faq, index) => (
+          <div>
+            <div className="mb-5 flex gap-2 overflow-x-auto pb-2" aria-label="FAQ Behandlung auswählen">
+              {treatments.map((treatment) => (
+                <Button key={treatment.title} type="button" variant={selectedTreatment === treatment.title ? "default" : "outline"} className="shrink-0 rounded-full" onClick={() => setSelectedTreatment(treatment.title)}>
+                  {treatment.title}
+                </Button>
+              ))}
+            </div>
+            <Accordion key={selectedTreatment} type="single" collapsible defaultValue="faq-0" className="faq-swap rounded-3xl border border-primary/35 bg-card px-6 shadow-soft">
+            {activeFaqs.map((faq, index) => (
               <AccordionItem key={faq.question} value={`faq-${index}`} className="border-primary/25">
                 <AccordionTrigger className="py-6 text-left font-serif text-2xl hover:no-underline">{faq.question}</AccordionTrigger>
                 <AccordionContent className="leading-7 text-muted-foreground">{faq.answer}</AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
+          </div>
+          </div>
         </div>
       </section>
 
-      <section id="buchung" className="bg-secondary/55 px-5 py-24 sm:px-8 lg:px-12">
+      <section id="buchung" data-reveal className="bg-secondary/55 px-5 py-24 sm:px-8 lg:px-12">
         <div className="mx-auto max-w-6xl rounded-3xl border border-primary/35 bg-card p-6 shadow-lumina sm:p-8 lg:p-10">
           <div className="flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
             <div>

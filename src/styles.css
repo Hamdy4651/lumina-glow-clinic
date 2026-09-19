@@ -170,3 +170,88 @@
 @utility organic-mask {
   border-radius: 48% 52% 44% 56% / 35% 39% 61% 65%;
 }
+
+@keyframes lumina-rise {
+  from { opacity: 0; transform: translateY(36px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lumina-reveal {
+  from { opacity: 0; transform: translateY(22px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes lumina-float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-0.4deg); }
+  50% { transform: translate3d(0, -14px, 0) rotate(0.4deg); }
+}
+
+@keyframes lumina-shimmer {
+  from { transform: translateX(-130%) skewX(-18deg); }
+  to { transform: translateX(240%) skewX(-18deg); }
+}
+
+.hero-kicker,
+.hero-title,
+.hero-copy > p:not(.hero-kicker),
+.hero-actions,
+.hero-copy > div:last-child {
+  opacity: 0;
+  animation: lumina-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-title { animation-delay: 0.12s; }
+.hero-copy > p:not(.hero-kicker) { animation-delay: 0.26s; }
+.hero-actions { animation-delay: 0.38s; }
+.hero-copy > div:last-child { animation-delay: 0.5s; }
+.hero-visual { opacity: 0; animation: lumina-reveal 1.15s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.hero-float { animation: lumina-float 7s ease-in-out infinite; }
+
+.hero-float::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 34%;
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--primary) 24%, transparent), transparent);
+  transform: translateX(-130%) skewX(-18deg);
+  animation: lumina-shimmer 6.5s 1.3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].is-visible { opacity: 1; transform: translateY(0); }
+
+.motion-card {
+  transform: translateZ(0);
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+.motion-card:hover {
+  transform: perspective(900px) translateY(-8px) rotateX(1.2deg) rotateY(-1.2deg);
+  box-shadow: var(--shadow-lumina);
+}
+
+.process-card { transform-origin: center left; }
+.process-card:not(:has(+ .process-card)) { margin-bottom: 0; }
+.detail-swap, .faq-swap, .testimonial-swap { animation: lumina-reveal 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+.image-drift { animation: lumina-float 9s ease-in-out infinite; transform: scale(1.04); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+
+@media (max-width: 767px) {
+  .motion-card:hover { transform: none; }
+  .hero-float { animation-duration: 9s; }
+}
