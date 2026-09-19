@@ -297,7 +297,7 @@ function Index() {
   const previousStep = () => setBookingStep((current) => Math.max(current - 1, 0));
 
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+    <main className="min-h-screen w-full overflow-x-hidden bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
       <Header menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
       <section id="start" className="relative min-h-[85vh] overflow-hidden px-5 pt-28 sm:px-8 lg:px-12">
@@ -406,8 +406,8 @@ function Index() {
             </p>
           </div>
 
-          <div className="mt-12 grid gap-5 lg:grid-cols-[1fr_0.82fr]">
-            <div className="grid gap-4 sm:grid-cols-2">
+          <div className="mt-12 grid min-w-0 gap-5 lg:grid-cols-[1fr_0.82fr]">
+            <div className="grid min-w-0 gap-4 sm:grid-cols-2">
               {treatments.map((treatment) => {
                 const Icon = treatment.icon;
                 const active = activeTreatment.title === treatment.title;
@@ -417,7 +417,7 @@ function Index() {
                     type="button"
                     variant="outline"
                     onClick={() => setSelectedTreatment(treatment.title)}
-                    className={`group motion-card h-auto whitespace-normal rounded-3xl p-6 text-left transition-all ${
+                    className={`group motion-card h-auto min-w-0 w-full whitespace-normal rounded-3xl p-6 text-left transition-all ${
                       active ? "border-primary bg-card shadow-lumina" : "border-border bg-background hover:border-primary/60"
                     }`}
                   >
